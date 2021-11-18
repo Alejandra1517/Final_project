@@ -12,25 +12,23 @@ class CreateStaff extends StatefulWidget {
 }
 
 class _CreateStaffState extends State<CreateStaff> {
-  final textControllerName = TextEditingController();
-  final textControllerLastName = TextEditingController();
-  final textControllerAdress = TextEditingController();
-  final textControllerBirthday = TextEditingController();
-  final textControllerSalary = TextEditingController();
-  final textControllerCreateDay = TextEditingController();
+  var textControllerName = TextEditingController();
+  var textControllerLastName = TextEditingController();
+  var textControllerAdress = TextEditingController();
+  var textControllerBirthday = TextEditingController();
+  var textControllerSalary = TextEditingController();
+  var textControllerCreateDay = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('devuelvis'),
-        //  backgroundColor: Colors.blueAccent,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(13.0),
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        appBar: AppBar(
+          title: Text('devuelvis'),
+          //  backgroundColor: Colors.blueAccent,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(13.0),
+          child: ListView(
             children: [
               TextField(
                 controller: textControllerName,
@@ -75,7 +73,6 @@ class _CreateStaffState extends State<CreateStaff> {
               ),
               TextField(
                 controller: textControllerSalary,
-                obscureText: false,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Salario',
@@ -95,7 +92,8 @@ class _CreateStaffState extends State<CreateStaff> {
                 height: 30.0,
               ),
               RaisedButton(
-                child: Text("Back"),
+                child: Text("Guardar"),
+                color: Colors.orange,
                 onPressed: () => callCreateStaff(
                     textControllerName.text,
                     textControllerLastName.text,
@@ -106,9 +104,7 @@ class _CreateStaffState extends State<CreateStaff> {
               )
             ],
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   void callCreateStaff(String name, String lastName, String adress,
@@ -136,17 +132,3 @@ class _CreateStaffState extends State<CreateStaff> {
     }
   }
 }
-
-
-//async {
-  //   var url = Uri.parse('https://618ef00450e24d0017ce14f2.mockapi.io/Staff');
-  //   Response response = await http.get(url);
-  //   if (response.StatusCode >= 200 && response.StatusCode <= 300) {
-    //(json.decode(response.body) as list).map(staffJson) => Staff.fromJson(staffJson)).tolist();
-    //setState(){
-
-    //}
-  //   } else {
-  //     print('hubo un error');
-  //   }
-  // }
