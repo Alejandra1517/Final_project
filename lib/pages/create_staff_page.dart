@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:final_project/models/staff.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -18,6 +16,17 @@ class _CreateStaffState extends State<CreateStaff> {
   var textControllerBirthday = TextEditingController();
   var textControllerSalary = TextEditingController();
   var textControllerCreateDay = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    textControllerName.dispose();
+    textControllerLastName.dispose();
+    textControllerAdress.dispose();
+    textControllerBirthday.dispose();
+    textControllerSalary.dispose();
+    textControllerCreateDay.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,9 +100,12 @@ class _CreateStaffState extends State<CreateStaff> {
               SizedBox(
                 height: 30.0,
               ),
-              RaisedButton(
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.orange,
+                    textStyle:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 child: Text("Guardar"),
-                color: Colors.orange,
                 onPressed: () => callCreateStaff(
                     textControllerName.text,
                     textControllerLastName.text,
@@ -116,7 +128,7 @@ class _CreateStaffState extends State<CreateStaff> {
         birthday: birthday,
         salary: salary);
 
-    var url = Uri.parse('https://618ef00450e24d0017ce14f2.mockapi.io/Staff');
+    var url = Uri.parse('https://6196e68baf46280017e7e304.mockapi.io/Staff');
 
     var staffBody = jsonEncode(staff);
 

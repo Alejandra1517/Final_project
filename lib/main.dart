@@ -1,4 +1,4 @@
-import 'package:final_project/pages/home_page.dart';
+import 'package:final_project/pages/login_page.dart';
 import 'package:final_project/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +24,7 @@ class MaterialAppWithTheme extends StatelessWidget {
     return MaterialApp(
       theme: theme.getTheme(),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }
